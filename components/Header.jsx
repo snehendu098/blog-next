@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
+import { links } from "../links";
 
 const Header = () => {
-  const links = [
-    { name: "Home", link: "/" },
-    { name: "Projects", link: "/" },
-    { name: "Articles", link: "/" },
-  ];
-
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="shadow-md fixed w-full z-10 bg-white">
+      <nav className="shadow-md sticky w-full z-10 bg-white">
         <div className="w-full">
           <div className="flex items-center h-12 w-full">
             <div className="flex items-center  mx-10  justify-between w-full">
@@ -31,7 +26,7 @@ const Header = () => {
                     </Link>
                   ))}
 
-                  <Link href={"/"}>
+                  <Link href={"mailto:roysnehendu1029@gmail.com"}>
                     <div className="cursor-pointer bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black">
                       Contact
                     </div>
@@ -95,31 +90,32 @@ const Header = () => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          {(ref) => (
-            <div
-              className="md:hidden absolute w-full shadow-md bg-white"
-              id="mobile-menu"
-            >
-              <div
-                ref={ref}
-                className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3"
-              >
-                {links.map((item, index) => (
-                  <Link href={item.link} key={index}>
-                    <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                      {item.name}
-                    </div>
-                  </Link>
-                ))}
-
-                <Link href={"/"}>
-                  <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    Contact
+          <div
+            className="md:hidden absolute w-full shadow-md bg-white"
+            id="mobile-menu"
+          >
+            <div className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {links.map((item, index) => (
+                <Link href={item.link} key={index}>
+                  <div
+                    onClick={() => setIsOpen(false)}
+                    className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    {item.name}
                   </div>
                 </Link>
-              </div>
+              ))}
+
+              <Link href={"mailto:roysnehendu1029@gmail.com"}>
+                <div
+                  onClick={() => setIsOpen(false)}
+                  className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Contact
+                </div>
+              </Link>
             </div>
-          )}
+          </div>
         </Transition>
       </nav>
     </div>

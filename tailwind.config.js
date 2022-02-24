@@ -26,6 +26,8 @@ module.exports = {
       brown: "#322514",
       blue: colors.blue,
       slate: colors.slate,
+      red: colors.red,
+      rose: colors.rose,
     },
     screens: {
       sm: "640px",
@@ -34,7 +36,7 @@ module.exports = {
       md: "768px",
       // => @media (min-width: 768px) { ... }
 
-      lg: "1024px",
+      lg: "1020px",
       // => @media (min-width: 1024px) { ... }
 
       xl: "1280px",
@@ -49,7 +51,7 @@ module.exports = {
       xlx: { max: "1279px" },
       // => @media (max-width: 1279px) { ... }
 
-      lgx: { max: "1023px" },
+      lgx: { max: "1020px" },
       // => @media (max-width: 1023px) { ... }
 
       mdx: { max: "767px" },
