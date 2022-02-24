@@ -3,7 +3,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className="text-white bg-slate-900 min-h-[100vh]">
+    <div className="min-h-[100vh] max-w-[100vw]">
       <Header />
       <div className="p-2">
         <Component {...pageProps} />
