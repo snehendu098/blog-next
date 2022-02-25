@@ -1,21 +1,18 @@
 import request, { gql } from "graphql-request";
 
-export const getPostQuery = async () => {
+export const getPosts = async (pagination) => {
   const query = gql`
     query MyQuery {
-      posts(orderBy: createdAt_DESC) {
+      posts(orderBy: createdAt_DESC, first: ${pagination}) {
+        title
         categories {
           slug
           title
         }
-        title
-        comments(orderBy: createdAt_DESC) {
-          name
-          content
-        }
         fetauredImage {
           url
         }
+        description
       }
     }
   `;

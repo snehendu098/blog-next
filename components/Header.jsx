@@ -7,27 +7,29 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="shadow-md sticky w-full z-10 bg-white">
+      <nav className="shadow-md sticky w-full z-10 bg-slate-800">
         <div className="w-full">
           <div className="flex items-center h-12 w-full">
             <div className="flex items-center  mx-10  justify-between w-full">
               <div className="flex justify-center items-center flex-shrink-0 ">
-                <h1 className=" font-bold text-xl cursor-pointer">
-                  Snehendu<span className="text-blue-500">Roy</span>
-                </h1>
+                <Link href={"/"}>
+                  <h1 className=" font-bold text-xl cursor-pointer">
+                    Snehendu<span className="text-blue-500">Roy</span>
+                  </h1>
+                </Link>
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {links.map((item, index) => (
                     <Link href={item.link} key={index}>
-                      <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                      <div className="cursor-pointer hover:bg-blue-500  px-3 py-2 rounded-md text-sm font-medium">
                         {item.name}
                       </div>
                     </Link>
                   ))}
 
                   <Link href={"mailto:roysnehendu1029@gmail.com"}>
-                    <div className="cursor-pointer bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black">
+                    <div className="cursor-pointer bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black">
                       Contact
                     </div>
                   </Link>
@@ -38,7 +40,7 @@ const Header = () => {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="bg-blue-600 inline-flex items-center justify-center p-2 rounded-md text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-800 focus:ring-white"
+                className="bg-blue-500 inline-flex items-center justify-center p-2 rounded-md text-white  hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-800 focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
@@ -91,15 +93,15 @@ const Header = () => {
           leaveTo="opacity-0 scale-95"
         >
           <div
-            className="md:hidden absolute w-full shadow-md bg-white"
+            className="md:hidden absolute w-full shadow-md bg-slate-900"
             id="mobile-menu"
           >
-            <div className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="bg-slate-800 px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {links.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <div
                     onClick={() => setIsOpen(false)}
-                    className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className="cursor-pointer hover:bg-blue-500  hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                   >
                     {item.name}
                   </div>
@@ -109,7 +111,7 @@ const Header = () => {
               <Link href={"mailto:roysnehendu1029@gmail.com"}>
                 <div
                   onClick={() => setIsOpen(false)}
-                  className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="cursor-pointer hover:bg-blue-500  hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Contact
                 </div>
