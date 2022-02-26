@@ -22,17 +22,23 @@ export const getPosts = async (pagination) => {
   return res;
 };
 
-export const getCategories = async () => {
+export const getCategories = async (pagination) => {
   const query = gql`
     query MyQuery {
       categories(orderBy: createdAt_DESC) {
-        createdAt
-        title
         slug
+        title
+        post(first: ${pagination})  {
+          title
+          description
+          slug
+        }
+        createdAt
       }
     }
   `;
 
   const res = await request(process.env.NEXT_PUBLIC_GRAPH_ENDPOINT, query);
+
   return res;
 };

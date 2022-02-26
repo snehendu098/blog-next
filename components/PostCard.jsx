@@ -11,6 +11,9 @@ const PostCard = ({ data }) => {
       />
       <p className="text-2xl font-bold py-2 text-center">{data?.title}</p>
       <p className="text-sm px-5 text-center">{data?.description}</p>
+      <div className="border p-2 mt-2 rounded-md hover:text-blue-500 hover:border-blue-500 cursor-pointer">
+        Learn More
+      </div>
     </div>
   );
 };

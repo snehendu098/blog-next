@@ -20,6 +20,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <IntroComponent />
+      <p className="text-center text-2xl font-bold mt-2">Recent Articles</p>
       <PostComponent data={data} />
     </div>
   );
