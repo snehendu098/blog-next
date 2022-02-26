@@ -16,7 +16,7 @@ const App = ({ data }) => {
       <p className="w-full text-center text-2xl font-bold my-2">
         Checkout my Articles
       </p>
-      <div className=" flex mdx:flex-col flex-wrap items-center justify-center">
+      <div className="grid grid-cols-2 gap-4 grid-flow-row-dense mdx:grid-cols-1 w-full p-4">
         {data?.categories.map((item, index) => {
           return <ArticleComponent data={item} key={index} />;
         })}

@@ -1,12 +1,18 @@
 import React from "react";
+import SmallPost from "./SmallPost";
 
 const ArticleComponent = ({ data }) => {
+  console.log(data);
   return (
-    <div className="w-[45%] md:m-2 mt-2 mdx:w-full blue-glassmorphism">
-      <div className="w-full flex items-center justify-center">
-        <p className="hover:text-blue-500 cursor-pointer text-2xl font-bold inline-block text-center">
+    <div className="w-full md:m-2 mt-2 mdx:w-full article-glassmorphism rounded-md p-3 shadow-2xl border">
+      <div className="w-full flex flex-col items-center justify-center">
+        <p className="hover:text-blue-500 cursor-pointer underline decoration-yellow-500 text-2xl font-bold inline-block text-center">
           {data?.title}
         </p>
+        {/* small post */}
+        {data?.post?.map((item, index) => (
+          <SmallPost data={item} key={index} />
+        ))}
       </div>
     </div>
   );
