@@ -2,7 +2,7 @@ import React from "react";
 import SmallPost from "./SmallPost";
 
 const ArticleComponent = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div className="w-full md:m-2 mt-2 mdx:w-full article-glassmorphism rounded-md p-3 shadow-2xl border">
       <div className="w-full flex flex-col items-center justify-center">

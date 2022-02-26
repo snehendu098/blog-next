@@ -3,7 +3,7 @@ import ArticleComponent from "../../components/ArticleComponent";
 import { getCategories } from "../../graphql/CoreQueries";
 
 export const getServerSideProps = async () => {
-  const data = await getCategories(5);
+  const data = await getCategories(4);
   return {
     props: { data },
   };
