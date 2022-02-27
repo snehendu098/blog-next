@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const PostCard = ({ data }) => {
@@ -11,9 +12,11 @@ const PostCard = ({ data }) => {
       />
       <p className="text-2xl font-bold p-2 text-center">{data?.title}</p>
       <p className="text-sm px-5 text-center">{data?.description}</p>
-      <div className="border p-2 mt-2 bg-gray-400 rounded-md hover:font-bold hover:border-blue-500 cursor-pointer">
-        Learn More
-      </div>
+      <Link href={`articles/${data?.slug}`}>
+        <div className="border p-2 mt-2 bg-gray-400 rounded-md hover:font-bold hover:border-blue-500 cursor-pointer">
+          Learn More
+        </div>
+      </Link>
     </div>
   );
 };

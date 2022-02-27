@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="p-2 w-full bg-white  bottom-0 font-bold border-t border-blue-500 flex items-center justify-center relative">
+    <div className="p-2 w-full bg-footer  bottom-0 font-bold border-t border-blue-500 flex items-center justify-center relative">
       <div className="w-1/2 text-center smx:text-sm">
         &#169; Created By{" "}
         <Link href={"/"}>

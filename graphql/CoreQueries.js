@@ -66,6 +66,7 @@ export const getSinglePost = async (slug) => {
         content
         createdAt
         description
+        slug
         fetauredImage {
           url
         }
@@ -74,10 +75,8 @@ export const getSinglePost = async (slug) => {
           slug
         }
         comments {
-          name
-          email
           content
-          createdAt
+          name
         }
       }
     }
@@ -86,4 +85,16 @@ export const getSinglePost = async (slug) => {
   const res = await request(process.env.NEXT_PUBLIC_GRAPH_ENDPOINT, query);
 
   return res;
+};
+
+export const submitComment = async (obj) => {
+  const result = await fetch("/api/comments", {
+    method: "POST",
+    body: JSON.stringify(obj),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return result.json();
 };
