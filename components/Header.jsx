@@ -7,7 +7,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="shadow-md sticky w-full z-10 bg-slate-800">
+      <nav className="shadow-md sticky backdrop-blur-2xl w-full z-10 top-0">
         <div className="w-full">
           <div className="flex items-center h-12 w-full">
             <div className="flex items-center  mx-10  justify-between w-full">
@@ -22,7 +22,7 @@ const Header = () => {
                 <div className="ml-10 flex items-baseline space-x-4">
                   {links.map((item, index) => (
                     <Link href={item.link} key={index}>
-                      <div className="cursor-pointer hover:bg-blue-500  px-3 py-2 rounded-md text-sm font-medium">
+                      <div className="cursor-pointer hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-bold">
                         {item.name}
                       </div>
                     </Link>
@@ -93,10 +93,10 @@ const Header = () => {
           leaveTo="opacity-0 scale-95"
         >
           <div
-            className="md:hidden absolute w-full shadow-md bg-slate-900"
+            className="md:hidden absolute w-full shadow-md bg-white"
             id="mobile-menu"
           >
-            <div className="bg-slate-800 px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {links.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <div

@@ -13,6 +13,21 @@ export const getPosts = async (pagination) => {
           url
         }
         description
+        slug
+      }
+    }
+  `;
+
+  const res = await request(process.env.NEXT_PUBLIC_GRAPH_ENDPOINT, query);
+
+  return res;
+};
+
+export const generatePages = async () => {
+  const query = gql`
+    query MyQuery {
+      posts {
+        slug
       }
     }
   `;
@@ -34,6 +49,36 @@ export const getCategories = async (pagination) => {
           slug
         }
         createdAt
+      }
+    }
+  `;
+
+  const res = await request(process.env.NEXT_PUBLIC_GRAPH_ENDPOINT, query);
+
+  return res;
+};
+
+export const getSinglePost = async (slug) => {
+  const query = gql`
+    query MyQuery {
+      post(where: { slug: "${slug}" }) {
+        title
+        content
+        createdAt
+        description
+        fetauredImage {
+          url
+        }
+        categories {
+          title
+          slug
+        }
+        comments {
+          name
+          email
+          content
+          createdAt
+        }
       }
     }
   `;

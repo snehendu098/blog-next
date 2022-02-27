@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const IntroComponent = () => {
   return (
-    <div className="w-full bg-slate-800 blue-glassmorphism mdx:flex-col mdx:justify-center mdx:items-center mt-2 flex md:flex-row-reverse shadow-md">
+    <div className="w-full bg-white blue-glassmorphism mdx:flex-col mdx:justify-center mdx:items-center mt-2 flex md:flex-row-reverse shadow-md">
       <div className="w-1/2 flex items-center justify-center p-10 mdx:mt-3 mdx:p-0">
         <Image
           src={pic}

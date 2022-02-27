@@ -4,7 +4,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className="min-h-[100vh] gradient-bg-welcome max-w-[100vw] bg-slate-900 text-white">
+    <div className="min-h-[100vh] gradient-bg-welcome max-w-[100vw]">
       <Header />
       <div className="p-2">
         <Component {...pageProps} />
