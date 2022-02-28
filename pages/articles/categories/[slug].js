@@ -61,9 +61,21 @@ const App = ({ cate, posts, slug }) => {
       </div>
       <div className="w-[75%] mdx:w-full p-3 flex flex-wrap">
         <div className="w-full">
-          {postsArray.map((item) => (
-            <PostCard data={item} style="shadow-sm bg-white" />
-          ))}
+          <InfiniteScroll
+            dataLength={postsArray.length}
+            next={addPosts}
+            className="flex w-full mdx:flex-col flex-wrap"
+            hasMore={hasMore}
+            endMessage={
+              <p className="w-full text-green-600 font-bold text-center">
+                You have seen it all
+              </p>
+            }
+          >
+            {postsArray.map((item) => (
+              <PostCard data={item} style="shadow-sm bg-white" />
+            ))}
+          </InfiniteScroll>
         </div>
       </div>
     </div>
