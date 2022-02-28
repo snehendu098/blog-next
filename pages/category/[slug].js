@@ -1,20 +1,16 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import CateCont from "../../../components/CateCont";
-import Loader from "../../../components/Loader";
-import PostCard from "../../../components/PostCard";
-import {
-  getCategories,
-  getPostsbyCategory,
-} from "../../../graphql/CoreQueries";
+import CateCont from "../../components/CateCont";
+import Loader from "../../components/Loader";
+import PostCard from "../../components/PostCard";
+import { getCategories, getPostsbyCategory } from "../../graphql/CoreQueries";
 
 export const getStaticPaths = async () => {
   const res = await getCategories();
   const paths = res.categories.map((cate) => ({
     params: { slug: cate.slug },
   }));
-  //   console.log(paths);
 
   return {
     paths: paths,
@@ -37,16 +33,17 @@ export async function getStaticProps({ params }) {
 }
 
 const App = ({ cate, posts, slug }) => {
-  const [postsArray, setPostsArray] = useState(posts.posts);
+  const postsArray = posts.posts;
+  const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
 
   const addPosts = async () => {
-    const posts = await getPostsbyCategory(20, postsArray.length, slug);
+    const posts = await getPostsbyCategory(5, postsArray.length, slug);
     if (posts.posts.length <= 0) {
       setHasMore(false);
       return;
     }
-    setPostsArray((p) => [...p, ...posts.posts]);
+    postsArray.push(posts.posts);
   };
 
   if (router.isFallback) {
@@ -66,9 +63,14 @@ const App = ({ cate, posts, slug }) => {
             next={addPosts}
             className="flex w-full mdx:flex-col flex-wrap"
             hasMore={hasMore}
+            loader={
+              <p className="text-xl font-bold text-blue-900 w-full text-center">
+                Loading posts
+              </p>
+            }
             endMessage={
-              <p className="w-full text-green-600 font-bold text-center">
-                You have seen it all
+              <p className="text-xl font-bold text-blue-900 w-full text-center">
+                You have reached the end of all posts
               </p>
             }
           >

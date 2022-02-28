@@ -17,9 +17,7 @@ const CateCont = ({ cate }) => {
                   key={item.slug}
                   className=" hover:text-blue-800 hover:font-bold cursor-pointer "
                 >
-                  <Link href={`/articles/categories/${item.slug}`}>
-                    {item.title}
-                  </Link>
+                  <Link href={`/category/${item.slug}`}>{item.title}</Link>
                 </p>
               </div>
             );
