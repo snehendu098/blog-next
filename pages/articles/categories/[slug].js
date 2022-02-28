@@ -1,6 +1,8 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CateCont from "../../../components/CateCont";
+import Loader from "../../../components/Loader";
 import PostCard from "../../../components/PostCard";
 import {
   getCategories,
@@ -37,7 +39,7 @@ export async function getStaticProps({ params }) {
 const App = ({ cate, posts, slug }) => {
   const [postsArray, setPostsArray] = useState(posts.posts);
   const [hasMore, setHasMore] = useState(true);
-  // console.log(postsArray);
+  const router = useRouter();
 
   const addPosts = async () => {
     const posts = await getPostsbyCategory(20, postsArray.length, slug);
@@ -47,6 +49,10 @@ const App = ({ cate, posts, slug }) => {
     }
     setPostsArray((p) => [...p, ...posts.posts]);
   };
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-[80vh] bg-transparent  w-full flex cond:flex-col flex-wrap">

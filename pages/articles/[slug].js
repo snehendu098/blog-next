@@ -1,9 +1,16 @@
 import React from "react";
 import { generatePages, getSinglePost } from "../../graphql/CoreQueries";
 import Article from "../../components/Article";
+import { useRouter } from "next/router";
+import Loader from "../../components/Loader";
 
 const App = ({ data }) => {
+  const router = useRouter();
   const post = data?.post;
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
   return (
     <div className="w-full flex flex-col items-center justify-center text-white">
       <Article post={post} />
@@ -19,7 +26,7 @@ export const getStaticPaths = async () => {
   }));
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
