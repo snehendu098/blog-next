@@ -4,7 +4,7 @@ import PostComponent from "../components/PostComponent";
 import { getPosts } from "../graphql/CoreQueries";
 
 export const getServerSideProps = async () => {
-  const res = await getPosts(3);
+  const res = await getPosts(3, 0);
   return {
     props: { data: res },
   };

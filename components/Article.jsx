@@ -38,6 +38,7 @@ const Article = ({ post }) => {
 
   return (
     <>
+      {/* post */}
       <div className="items-center flex flex-col p-5 rounded-md w-[65%] mdx:w-full article-glassmorphism">
         <div className="w-full">
           <img
@@ -87,11 +88,13 @@ const Article = ({ post }) => {
           </div>
 
           {/* markdown */}
-          <p className="prose text-black prose-lg  prose-blockquote:font-bold prose-headings:text-3xl min-w-full prose-p:text-xl prose-headings:underline prose-headings:decoration-yellow-500">
+          <p className="prose text-black prose-lg prose-headings:text-2xl min-w-full prose-p:text-xl  prose-headings:decoration-yellow-500">
             <ReactMarkdown>{content}</ReactMarkdown>
           </p>
         </div>
       </div>
+
+      {/* leave a reply */}
       <div className="mdx:w-full w-[65%] mt-3 article-glassmorphism p-3 rounded-md">
         <p className="text-2xl mb-2 font-bold text-black">Leave a Comment</p>
         {error && (
@@ -135,26 +138,18 @@ const Article = ({ post }) => {
           Submit
         </button>
       </div>
+
+      {/* comments */}
       {post.comments.length > 0 && (
         <div className="mdx:w-full w-[65%] mt-3 article-glassmorphism p-3 rounded-md">
           {post?.comments?.map((item, indx) => {
-            const colors = [
-              "yellow",
-              "red",
-              "gray",
-              "emerald",
-              "indigo",
-              "pink",
-              "rose",
-            ];
-
             return (
               <div
                 key={indx}
                 id="create-color"
-                className={`text-black border-l-4 border-l-${colors}-500 p-2 my-5`}
+                className={`text-black p-3 border-l-4 border-l-blue-400 my-5`}
               >
-                <p className="text-xl font-bold">{item.name}</p>
+                <p className="text-xl font-bold uppercase">{item.name}</p>
                 <p className="text-sm">{item.content}</p>
               </div>
             );

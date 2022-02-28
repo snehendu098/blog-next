@@ -58,6 +58,8 @@ module.exports = {
 
       smx: { max: "639px" },
       // => @media (max-width: 639px) { ... }
+
+      cond: { max: "943px" },
     },
   },
   plugins: [require("@tailwindcss/typography")],

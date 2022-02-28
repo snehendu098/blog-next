@@ -3,7 +3,7 @@ import PostCard from "./PostCard";
 
 const PostComponent = ({ data }) => {
   return (
-    <div className="flex flex-wrap items-center justify-center">
+    <div className="flex flex-wrap justify-center">
       {data?.posts.map((item, index) => (
         <PostCard data={item} key={index} />
       ))}

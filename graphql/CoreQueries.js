@@ -1,9 +1,9 @@
 import request, { gql } from "graphql-request";
 
-export const getPosts = async (pagination) => {
+export const getPosts = async (first, skip) => {
   const query = gql`
     query MyQuery {
-      posts(orderBy: createdAt_DESC, first: ${pagination}) {
+      posts(orderBy: createdAt_DESC, first: ${first || 0}, skip: ${skip || 0}) {
         title
         categories {
           slug
@@ -37,18 +37,12 @@ export const generatePages = async () => {
   return res;
 };
 
-export const getCategories = async (pagination) => {
+export const getCategories = async () => {
   const query = gql`
     query MyQuery {
       categories(orderBy: createdAt_DESC) {
         slug
         title
-        post(first: ${pagination})  {
-          title
-          description
-          slug
-        }
-        createdAt
       }
     }
   `;
@@ -97,4 +91,27 @@ export const submitComment = async (obj) => {
   });
 
   return result.json();
+};
+
+export const getPostsbyCategory = async (pagination, skip, slug) => {
+  const query = gql`
+    query MyQuery {
+      posts(orderBy: createdAt_DESC, first: ${pagination}, skip: ${skip}, where: {categories_some: {slug: "${slug}"}}) {
+        title
+        categories {
+          slug
+          title
+        }
+        fetauredImage {
+          url
+        }
+        description
+        slug
+      }
+    }
+  `;
+
+  const res = await request(process.env.NEXT_PUBLIC_GRAPH_ENDPOINT, query);
+
+  return res;
 };

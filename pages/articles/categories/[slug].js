@@ -1,23 +1,45 @@
-import Link from "next/link";
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import CateCont from "../../components/CateCont";
-import PostCard from "../../components/PostCard";
-import { getCategories, getPosts } from "../../graphql/CoreQueries";
+import CateCont from "../../../components/CateCont";
+import PostCard from "../../../components/PostCard";
+import {
+  getCategories,
+  getPostsbyCategory,
+} from "../../../graphql/CoreQueries";
 
-export const getServerSideProps = async () => {
-  const cate = await getCategories();
-  const posts = await getPosts(10, 0);
+export const getStaticPaths = async () => {
+  const res = await getCategories();
+  const paths = res.categories.map((cate) => ({
+    params: { slug: cate.slug },
+  }));
+  //   console.log(paths);
+
   return {
-    props: { cate, posts },
+    paths: paths,
+    fallback: true,
   };
 };
 
-const App = ({ cate, posts }) => {
+export async function getStaticProps({ params }) {
+  const { slug } = params;
+  const posts = await getPostsbyCategory(10, 0, slug);
+  const cate = await getCategories();
+
+  return {
+    props: {
+      posts,
+      cate,
+      slug,
+    },
+  };
+}
+
+const App = ({ cate, posts, slug }) => {
   const [postsArray, setPostsArray] = useState(posts.posts);
   const [hasMore, setHasMore] = useState(true);
+  console.log(postsArray);
   const addPosts = async () => {
-    const posts = await getPosts(20, postsArray.length);
+    const posts = await getPostsbyCategory(20, postsArray.length, slug);
     if (posts.posts.length <= 0) {
       setHasMore(false);
       return;
@@ -25,7 +47,7 @@ const App = ({ cate, posts }) => {
     setPostsArray((p) => [...p, ...posts.posts]);
   };
   return (
-    <div className="min-h-[80vh] bg-transparent  w-full flex mdx:flex-col flex-wrap">
+    <div className="min-h-[80vh] bg-transparent  w-full flex cond:flex-col flex-wrap">
       <div className="w-[25%] flex justify-center bg-transparent  mdx:w-full">
         {/* categories */}
         <CateCont cate={cate} />
