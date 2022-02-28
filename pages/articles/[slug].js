@@ -11,6 +11,7 @@ const App = ({ data }) => {
   if (router.isFallback) {
     return <Loader />;
   }
+
   return (
     <div className="w-full flex flex-col items-center justify-center text-white">
       <Article post={post} />
@@ -26,7 +27,7 @@ export const getStaticPaths = async () => {
   }));
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
