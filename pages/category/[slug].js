@@ -33,6 +33,8 @@ export async function getStaticProps({ params }) {
 }
 
 const App = ({ cate, posts, slug }) => {
+  if (!cate || !posts || !slug) return null;
+
   const postsArray = posts.posts;
   const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
@@ -48,40 +50,40 @@ const App = ({ cate, posts, slug }) => {
 
   if (router.isFallback) {
     return <Loader />;
-  }
-
-  return (
-    <div className="min-h-[80vh] bg-transparent  w-full flex cond:flex-col flex-wrap">
-      <div className="w-[25%] flex justify-center bg-transparent  mdx:w-full">
-        {/* categories */}
-        <CateCont cate={cate} />
-      </div>
-      <div className="w-[75%] mdx:w-full p-3 flex flex-wrap">
-        <div className="w-full">
-          <InfiniteScroll
-            dataLength={postsArray.length}
-            next={addPosts}
-            className="flex w-full mdx:flex-col flex-wrap"
-            hasMore={hasMore}
-            loader={
-              <p className="text-xl font-bold text-blue-900 w-full text-center">
-                Loading posts
-              </p>
-            }
-            endMessage={
-              <p className="text-xl font-bold text-blue-900 w-full text-center">
-                You have reached the end of all posts
-              </p>
-            }
-          >
-            {postsArray.map((item) => (
-              <PostCard data={item} style="shadow-sm bg-white" />
-            ))}
-          </InfiniteScroll>
+  } else {
+    return (
+      <div className="min-h-[80vh] bg-transparent  w-full flex cond:flex-col flex-wrap">
+        <div className="w-[25%] flex justify-center bg-transparent  mdx:w-full">
+          {/* categories */}
+          <CateCont cate={cate} />
+        </div>
+        <div className="w-[75%] mdx:w-full p-3 flex flex-wrap">
+          <div className="w-full">
+            <InfiniteScroll
+              dataLength={postsArray.length}
+              next={addPosts}
+              className="flex w-full mdx:flex-col flex-wrap"
+              hasMore={hasMore}
+              loader={
+                <p className="text-xl font-bold text-blue-900 w-full text-center">
+                  Loading posts
+                </p>
+              }
+              endMessage={
+                <p className="text-xl font-bold text-blue-900 w-full text-center">
+                  You have reached the end of all posts
+                </p>
+              }
+            >
+              {postsArray.map((item) => (
+                <PostCard data={item} style="shadow-sm bg-white" />
+              ))}
+            </InfiniteScroll>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default App;

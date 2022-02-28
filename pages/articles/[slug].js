@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Loader from "../../components/Loader";
 
 const App = ({ data }) => {
+  if (!data) return null;
   const router = useRouter();
   const post = data?.post;
 
