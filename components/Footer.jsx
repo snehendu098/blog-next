@@ -5,6 +5,7 @@ import {
   AiFillTwitterCircle,
   AiFillInstagram,
 } from "react-icons/ai";
+import { social } from "../links";
 
 const Footer = () => {
   return (
@@ -18,13 +19,19 @@ const Footer = () => {
       <div className="w-1/3">
         <div className="flex p-3 text-4xl mdx:p-5">
           <div className="hover:text-blue-500 cursor-pointer">
-            <AiFillTwitterCircle />
+            <Link href={social.twitter}>
+              <AiFillTwitterCircle />
+            </Link>
           </div>
           <div className="hover:text-slate-900 cursor-pointer">
-            <AiFillGithub />
+            <Link href={social.github}>
+              <AiFillGithub />
+            </Link>
           </div>
           <div className="hover:text-red-600 cursor-pointer">
-            <AiFillInstagram />
+            <Link href={social.instagram}>
+              <AiFillInstagram />
+            </Link>
           </div>
         </div>
       </div>

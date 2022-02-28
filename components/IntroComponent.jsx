@@ -7,6 +7,7 @@ import {
   AiFillInstagram,
 } from "react-icons/ai";
 import Link from "next/link";
+import { social } from "../links";
 
 const IntroComponent = () => {
   return (
@@ -35,13 +36,19 @@ const IntroComponent = () => {
         </p>
         <div className="flex px-7 text-4xl mdx:p-5">
           <div className="hover:text-blue-500 cursor-pointer">
-            <AiFillTwitterCircle />
+            <Link href={social.twitter}>
+              <AiFillTwitterCircle />
+            </Link>
           </div>
           <div className="hover:text-slate-900 cursor-pointer">
-            <AiFillGithub />
+            <Link href={social.github}>
+              <AiFillGithub />
+            </Link>
           </div>
           <div className="hover:text-red-600 cursor-pointer">
-            <AiFillInstagram />
+            <Link href={social.instagram}>
+              <AiFillInstagram />
+            </Link>
           </div>
         </div>
       </div>
