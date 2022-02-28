@@ -38,7 +38,6 @@ export async function getStaticProps({ params }) {
 
 const App = ({ cate, posts, slug }) => {
   const [postsArray, setPostsArray] = useState(posts.posts);
-  const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
 
   const addPosts = async () => {
@@ -62,21 +61,9 @@ const App = ({ cate, posts, slug }) => {
       </div>
       <div className="w-[75%] mdx:w-full p-3 flex flex-wrap">
         <div className="w-full">
-          <InfiniteScroll
-            dataLength={postsArray.length}
-            next={addPosts}
-            className="flex w-full mdx:flex-col flex-wrap"
-            hasMore={hasMore}
-            endMessage={
-              <p className="w-full text-green-600 font-bold text-center">
-                You have seen it all
-              </p>
-            }
-          >
-            {postsArray.map((item) => (
-              <PostCard data={item} style="shadow-sm bg-white" />
-            ))}
-          </InfiniteScroll>
+          {postsArray.map((item) => (
+            <PostCard data={item} style="shadow-sm bg-white" />
+          ))}
         </div>
       </div>
     </div>
