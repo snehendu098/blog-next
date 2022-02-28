@@ -9,7 +9,7 @@ const PostCard = ({ data, style }) => {
         className={`w-full md:m-3 my-2 md:w-[40%] bg-white rounded-xl xl:w-[30%] rounded-t-md pb-3 shadow-sm flex flex-col items-center ${style}`}
       >
         <img
-          src={data?.fetauredImage?.url}
+          src={data?.featuredImage?.url}
           alt="image"
           className="w-full relative t-0 h-60 object-cover rounded-t-md shadow-lg"
         />

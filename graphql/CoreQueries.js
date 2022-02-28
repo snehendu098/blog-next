@@ -9,7 +9,7 @@ export const getPosts = async (first, skip) => {
           slug
           title
         }
-        fetauredImage {
+        featuredImage {
           url
         }
         description
@@ -61,7 +61,7 @@ export const getSinglePost = async (slug) => {
         createdAt
         description
         slug
-        fetauredImage {
+        featuredImage {
           url
         }
         categories {
@@ -102,7 +102,7 @@ export const getPostsbyCategory = async (pagination, skip, slug) => {
           slug
           title
         }
-        fetauredImage {
+        featuredImage {
           url
         }
         description

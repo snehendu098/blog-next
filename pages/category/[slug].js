@@ -75,8 +75,8 @@ const App = ({ cate, posts, slug }) => {
                 </p>
               }
             >
-              {postsArray.map((item) => (
-                <PostCard data={item} style="shadow-sm bg-white" />
+              {postsArray.map((item, i) => (
+                <PostCard data={item} style="shadow-sm bg-white" key={i} />
               ))}
             </InfiniteScroll>
           </div>

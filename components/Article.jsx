@@ -42,7 +42,7 @@ const Article = ({ post }) => {
       <div className="items-center flex flex-col p-5 rounded-md w-[65%] mdx:w-full article-glassmorphism">
         <div className="w-full">
           <img
-            src={post?.fetauredImage?.url}
+            src={post?.featuredImage?.url}
             alt="Image"
             className="w-full rounded-md mdx:w-full mb-5"
           />
