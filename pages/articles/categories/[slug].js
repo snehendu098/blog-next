@@ -37,7 +37,8 @@ export async function getStaticProps({ params }) {
 const App = ({ cate, posts, slug }) => {
   const [postsArray, setPostsArray] = useState(posts.posts);
   const [hasMore, setHasMore] = useState(true);
-  console.log(postsArray);
+  // console.log(postsArray);
+
   const addPosts = async () => {
     const posts = await getPostsbyCategory(20, postsArray.length, slug);
     if (posts.posts.length <= 0) {
@@ -46,6 +47,7 @@ const App = ({ cate, posts, slug }) => {
     }
     setPostsArray((p) => [...p, ...posts.posts]);
   };
+
   return (
     <div className="min-h-[80vh] bg-transparent  w-full flex cond:flex-col flex-wrap">
       <div className="w-[25%] flex justify-center bg-transparent  mdx:w-full">
