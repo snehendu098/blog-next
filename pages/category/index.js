@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -26,6 +27,9 @@ const App = ({ cate, posts }) => {
   };
   return (
     <div className="min-h-[80vh] bg-transparent  w-full flex mdx:flex-col flex-wrap">
+      <Head>
+        <title>Snehendu Roy</title>
+      </Head>
       <div className="w-[25%] flex justify-center bg-transparent  mdx:w-full">
         {/* categories */}
         <CateCont cate={cate} />

@@ -5,6 +5,7 @@ import CateCont from "../../components/CateCont";
 import Loader from "../../components/Loader";
 import PostCard from "../../components/PostCard";
 import { getCategories, getPostsbyCategory } from "../../graphql/CoreQueries";
+import Head from "next/head";
 
 export const getStaticPaths = async () => {
   const res = await getCategories();
@@ -53,6 +54,13 @@ const App = ({ cate, posts, slug }) => {
   } else {
     return (
       <div className="min-h-[80vh] bg-transparent  w-full flex cond:flex-col flex-wrap">
+        <Head>
+          <title>Snehendu Roy | Categories</title>
+          <meta
+            name="keywords"
+            content="Programming, Entrepreneurship, Knowledge"
+          />
+        </Head>
         <div className="w-[25%] flex justify-center bg-transparent  mdx:w-full">
           {/* categories */}
           <CateCont cate={cate} />

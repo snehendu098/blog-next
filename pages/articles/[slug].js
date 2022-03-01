@@ -3,6 +3,7 @@ import { generatePages, getSinglePost } from "../../graphql/CoreQueries";
 import Article from "../../components/Article";
 import { useRouter } from "next/router";
 import Loader from "../../components/Loader";
+import Head from "next/head";
 
 const App = ({ data }) => {
   if (!data) return null;
@@ -15,6 +16,9 @@ const App = ({ data }) => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center text-white">
+      <Head>
+        <title>Snehendu Roy | Post </title>
+      </Head>
       <Article post={post} />
     </div>
   );

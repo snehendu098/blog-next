@@ -16,6 +16,10 @@ export default function Home({ data }) {
     <div className="min-h-[80vh]">
       <Head>
         <title>Snehendu Roy</title>
+        <meta
+          name="keywords"
+          content="Programming, Entrepreneurship, Knowledge"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <IntroComponent />
