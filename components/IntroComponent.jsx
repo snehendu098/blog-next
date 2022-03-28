@@ -28,7 +28,7 @@ const IntroComponent = () => {
         <p className="text-3xl p-7 mdx:p-5 mdx:pt-0 mdx:text-xl">
           A programmer with entrepreneurship goals. Here, I will share my
           learnings through{" "}
-          <Link href={"/articles"}>
+          <Link href={"/category"}>
             <span className="text-blue-500 cursor-pointer font-bold">
               ARTICLES
             </span>
